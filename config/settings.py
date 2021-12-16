@@ -127,6 +127,6 @@ MEDITA_ROOT = './media/'
 
 AUTH_USER_MODEL ='accounts.User'
 
-#LOGIN_URL = 'login'
-#LOGIN_REDIRECT_URL = 'home'
-#LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
