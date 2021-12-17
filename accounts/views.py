@@ -11,13 +11,13 @@ def signup_original(request):
             email = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)]))+"example.com",
             password = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])),
         )
-        """#中間テーブルに登録したい
+        #中間テーブルに登録したい
         for i in range(1,3):#for i in range(1,16):
             Stamp.objects.create(
                 shop = Shop.objects.get(in_area_num=i),
                 user = user_data,
             )
-        """
+        
         
         login(request, user_data)
         
@@ -30,14 +30,15 @@ def signup_random(request):
             email = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)]))+"example.com",
             password = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])),
         )
-        """#中間テーブルに登録したい
+        #中間テーブルに登録したい
         for i in range(1,3):#for i in range(1,16):
             Stamp.objects.create(
                 shop = Shop.objects.get(in_area_num=i),
                 user = user_data,
             )
-        """
+        
         login(request, user_data)
+        #random_list = random.sample(range(1,16), 5)
         
     return render(request,'stamp/mount.html')
 

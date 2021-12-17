@@ -12,7 +12,7 @@
       {% csrf_token %}
       <button type="submit" value="オリジナルで作成">オリジナルで作成</button>
     </form>
-    <form action="{% url 'random' %}" method="POST">
+    <form action="{% url 'random_route' %}" method="POST">
       {% csrf_token %}
       <button type="submit" value="ランダムで作成">ランダム作成</button>
     </form>

@@ -13,7 +13,7 @@
         <input type="checkbox" name="tag_and_category" value="わくわく">わくわく
         <input type="checkbox" name="tag_and_category" value="お土産">お土産
         </p>
-    <form action="" method="POST">
+    <form action="{% url 'original_route' %}" method="POST">
         {% csrf_token %}
         <button type="submit" value="台紙を作成">台紙を作成</button>
     </form>
