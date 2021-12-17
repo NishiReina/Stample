@@ -12,18 +12,27 @@ def index(request):
 @login_required
 def original(request):
     if request.method == 'POST':
-        #checkbox_list = request.POST.getlist["tag_and_category"]
+        
         return render(request,'stamp/original.html')
 
 def original_route(request):
     if request.method == 'POST':
-        #checkbox_list = request.POST.getlist["tag_and_category"]
+        checkbox_list=request.POST.getlist("tag_and_category")
+
+        for i in range(len(checkbox_list)):
+            for j in range(1,3):#for j in range(1,16):
+                count=1
         return render(request,'stamp/mount.html')
 
 def random_route(request):
     if request.method == 'POST':
         random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
         return render(request,'stamp/mount.html')
+
+def user_picturebook(request):
+    if request.method == 'POST':
+        #user_data = request.user
+        return render(request,'stamp/picturebook.html')
 
            
 
