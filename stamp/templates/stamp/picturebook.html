@@ -6,7 +6,7 @@
     </head>
   <body>
     <h1>スタンプ収集率</h1>
-    <h2>%</h2>
+    <h2>{{ collection_rate }}%</h2>
     
     {% for stamp in stamps %}
     {% if stamp.judgement %}<!--スタンプの画像うつす-->
@@ -32,7 +32,7 @@
       <p>{{ stamp.shop.shop_name }}</p>
       <p>{{ stamp.shop.catchphrase }}</p>
       <img src="{{ stamp.shop.image.url }}"/>
-      <p>#{{ stamp.shop.tag.name }}</p>
+      <p>#{{ stamp.shop.tags.name }}</p>
       <p>{{ stamp.shop.shop_detail }}</p>
       <p>{{ stamp.shop.item_name }}</p>
       <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
@@ -64,7 +64,7 @@
       <p>{{ stamp.shop.shop_name }}</p>
       <p>{{ stamp.shop.catchphrase }}</p>
       <img src="{{ stamp.shop.image.url }}"/>
-      <p>#{{ stamp.shop.tag.name }}</p>
+      <p>#{{ stamp.shop.tags.name }}</p>
       <p>{{ stamp.shop.shop_detail }}</p>
       <p>{{ stamp.shop.item_name }}</p>
       <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
