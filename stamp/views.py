@@ -31,8 +31,11 @@ def random_route(request):
 
 def user_picturebook(request):
     if request.method == 'POST':
-        #user_data = request.user
-        return render(request,'stamp/picturebook.html')
+        user_data = request.user
+        stamps = Stamp.objects.filter(user=user_data.uuid)
+        context = {'stamps':stamps}#stampのテーブル特定
+        
+    return render(request,'stamp/picturebook.html',context)
 
            
 

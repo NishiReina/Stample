@@ -11,6 +11,11 @@
         {% csrf_token %}
         <button type="submit" value="台紙の作成">スタートする</button>
     </form>
+
+    <form action="{% url 'user_picturebook' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" value="">図鑑</button>
+    </form>
     
     
 </body>

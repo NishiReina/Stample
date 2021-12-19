@@ -8,6 +8,73 @@
     <h1>スタンプ収集率</h1>
     <h2>%</h2>
     
+    {% for stamp in stamps %}
+    {% if stamp.judgement %}<!--スタンプの画像うつす-->
+    <div>
+      <img src="{{ stamp.shop.stamp_image.url }}"/>
+      <p>{{ stamp.shop.in_area_num }}.  {{ stamp.shop.shop_name }}</p>
+    </div>
+    <!--スタンプ押したときに出るモーダルの中身-->
+    <div>
+      <p>図鑑No.{{ stamp.shop.in_area_num }}</p>
+      <img src="{{ stamp.shop.stamp_image.url }}"/>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.category.name }}</p>
+      <p>{{ stamp.shop.shop_name }}</p>
+      <p>{{ stamp.shop.origin }}</p>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.item_detail }}</p>
+    </div>
+    <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
+    <div>
+      <p>{{ stamp.shop.in_area_num }}</p>
+      <p>{{ stamp.shop.category.name }}</p>
+      <p>{{ stamp.shop.shop_name }}</p>
+      <p>{{ stamp.shop.catchphrase }}</p>
+      <img src="{{ stamp.shop.image.url }}"/>
+      <p>#{{ stamp.shop.tag.name }}</p>
+      <p>{{ stamp.shop.shop_detail }}</p>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
+      <p>{{ stamp.shop.contact }}</p>
+
+    </div>
+    <br>
+    
+    {% else %}<!--スタンプの画像うつさない-->
+    <div>
+      <img/>
+      <p>{{ stamp.shop.in_area_num }}.  {{ stamp.shop.shop_name }}</p>
+    </div>
+    <!--スタンプ押したときに出るモーダルの中身-->
+    <div>
+      <p>図鑑No.{{ stamp.shop.in_area_num }}</p>
+      <img/>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.category.name }}</p>
+      <p>{{ stamp.shop.shop_name }}</p>
+      <p>{{ stamp.shop.origin }}</p>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.item_detail }}</p>
+    </div>
+    <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
+    <div>
+      <p>{{ stamp.shop.in_area_num }}</p>
+      <p>{{ stamp.shop.category.name }}</p>
+      <p>{{ stamp.shop.shop_name }}</p>
+      <p>{{ stamp.shop.catchphrase }}</p>
+      <img src="{{ stamp.shop.image.url }}"/>
+      <p>#{{ stamp.shop.tag.name }}</p>
+      <p>{{ stamp.shop.shop_detail }}</p>
+      <p>{{ stamp.shop.item_name }}</p>
+      <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
+      <p>{{ stamp.shop.contact }}</p>
+
+    </div>
+    {% endif %}
+    {% endfor %}
+    
+   
     
     
 </body>
