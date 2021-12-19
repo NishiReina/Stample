@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
-#from django.conf.urls.static import static # ← これ追加
-#from django.conf import settings 
+from django.conf.urls.static import static # ← これ追加
+from django.conf import settings 
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -10,5 +10,4 @@ urlpatterns = [
     path('original_route', views.original_route, name='original_route'),
     path('user_picturebook', views.user_picturebook, name='user_picturebook'),
     
-]
-#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
