@@ -72,7 +72,9 @@
       <p>{{ stamp.shop.shop_name }}</p>
       <p>{{ stamp.shop.catchphrase }}</p>
       <img src="{{ stamp.shop.image.url }}"/>
-      <p>#{{ stamp.shop.tags.name }}</p>
+      {% for tag in stamp.shop.tags.all %}
+      <p>#{{ tag.name }}</p>
+      {% endfor %}
       <p>{{ stamp.shop.shop_detail }}</p>
       <p>{{ stamp.shop.item_name }}</p>
       <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>

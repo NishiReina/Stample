@@ -21,7 +21,12 @@ def original_route(request):
 
         for i in range(len(checkbox_list)):
             for j in range(1,3):#for j in range(1,16):
-                count=1
+                count=0
+                shop = Shop.objects.get(in_area_num=j)
+                if shop.category.name ==checkbox_list[i]:
+                    count+=1
+                
+                
         return render(request,'stamp/mount.html')
 
 def random_route(request):
