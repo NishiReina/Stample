@@ -33,6 +33,8 @@ def random_route(request):
     if request.method == 'POST':
         random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
         return render(request,'stamp/mount.html')
+
+
 def home(request):
     stamp_list=request.session['key']
     user_data = request.user
@@ -45,8 +47,20 @@ def home(request):
            
     return render(request,'stamp/home.html',{'stamps':stamps})
 
+def route(request):
+    stamp_list=request.session['key']
+    user_data = request.user
+    stamps = []
+
+    for i in range(len(stamp_list)):
+        shop = Shop.objects.get(in_area_num = stamp_list[i])
+        stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+        stamps.append(stamp)
+           
+    return render(request,'stamp/route.html',{'stamps':stamps})
+
+
 def user_picturebook(request):
-  
     user_data = request.user
     stamps = Stamp.objects.filter(user=user_data.uuid
         )
@@ -60,8 +74,6 @@ def user_picturebook(request):
     collection_rate=int(collection_rate)
     context = {'stamps':stamps,
                    'collection_rate':collection_rate}#stampのテーブル特定
-        
-        
     return render(request,'stamp/picturebook.html',context)
 
            
