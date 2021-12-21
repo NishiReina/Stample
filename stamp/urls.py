@@ -11,5 +11,6 @@ urlpatterns = [
     path('user_picturebook', views.user_picturebook, name='user_picturebook'),
     path('home', views.home, name='home'),
     path('route', views.route, name='route'),
+    path('stamp', views.stamp, name='stamp'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

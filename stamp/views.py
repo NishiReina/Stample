@@ -40,10 +40,6 @@ def original_route(request):
             stamps.append(stamp)
         return render(request,'stamp/mount.html',{'stamps':stamps})
 
-                
-                
-                
-        return render(request,'stamp/mount.html')
 
 def random_route(request):
     if request.method == 'POST':
@@ -91,6 +87,20 @@ def user_picturebook(request):
     context = {'stamps':stamps,
                    'collection_rate':collection_rate}#stampのテーブル特定
     return render(request,'stamp/picturebook.html',context)
+
+def stamp(request):
+    user_data = request.user
+    if request.method == 'POST':
+        input_shop_name =request.POST.get('shop_name')
+        input_keyword = request.POST.get('keyword')
+        shop = Shop.objects.get(shop_name=input_shop_name)
+        stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
+        if shop.keyword==input_keyword:
+            stamp.judgement = True
+        stamp.save()
+        
+
+    return render(request,'stamp/picturebook.html') 
 
            
 
