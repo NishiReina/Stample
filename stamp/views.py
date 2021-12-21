@@ -42,9 +42,16 @@ def original_route(request):
 
 
 def random_route(request):
+    user_data = request.user
     if request.method == 'POST':
         random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
-        return render(request,'stamp/mount.html')
+        request.session['key']=random_list
+        stamps=[]
+        for i in range(1,len(random_list)+1):
+            shop = Shop.objects.get(in_area_num = i)
+            stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+            stamps.append(stamp)
+    return render(request,'stamp/mount.html',{'stamps':stamps})
 
 
 def home(request):
