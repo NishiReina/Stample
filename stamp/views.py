@@ -35,20 +35,19 @@ def random_route(request):
         return render(request,'stamp/mount.html')
 
 def user_picturebook(request):
-    if request.method == 'POST':
-        user_data = request.user
-        stamps = Stamp.objects.filter(user=user_data.uuid
+  
+    user_data = request.user
+    stamps = Stamp.objects.filter(user=user_data.uuid
         )
 
 
-        count=0
-        for i in range(0,2):
-            if (stamps[i].judgement)==True:
-                count+=1
-            collection_rate=(count/2)*100
-            collection_rate=int(collection_rate)
-
-        context = {'stamps':stamps,
+    count=0
+    for i in range(0,2):
+        if (stamps[i].judgement)==True:
+            count+=1
+    collection_rate=(count/2)*100
+    collection_rate=int(collection_rate)
+    context = {'stamps':stamps,
                    'collection_rate':collection_rate}#stampのテーブル特定
         
         

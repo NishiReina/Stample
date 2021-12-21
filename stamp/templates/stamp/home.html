@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>mount</title>
+    </head>
+  <body>
+    <h1>さぁ、スタンプを集めよう！</h1>
+
+    <div>
+        <button value="スタンプを押す">スタンプを押す</button>
+  
+      <form action="" method="POST">
+          {% csrf_token %}
+          <p>キーワードを入力<input type="text" name="keyword"></p>
+          <p>お店の名前を入力<input type="text" name="shop_name"></p>
+          <button type="submit" value="スタンプを押す">スタンプを押す</button>
+      </form>
+      </div>
+  
+  
+  
+      <p><a href="{% url '#' %}">ホーム</a></p>
+      <p><a href="{% url '#' %}">ルート</a></p>
+      <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
+      
+    
+</body>
+</html>
