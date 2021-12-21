@@ -16,15 +16,31 @@ def original(request):
         return render(request,'stamp/original.html')
 
 def original_route(request):
+    user_data = request.user
     if request.method == 'POST':
         checkbox_list=request.POST.getlist("tag_and_category")
-
+        score_list=[[1,0],[2,0]]
         for i in range(len(checkbox_list)):
             for j in range(1,3):#for j in range(1,16):
-                count=0
                 shop = Shop.objects.get(in_area_num=j)
-                if shop.category.name ==checkbox_list[i]:
-                    count+=1
+                tags =  shop.tags.all()
+                if shop.category.name==checkbox_list[i]:
+                    score_list[j-1][1]+=1
+                for k in range(len(tags)):
+                    if tags[k].name==checkbox_list[i]:
+                        score_list[j-1][1]+=1
+        score_list.sort(key=lambda x: x[1], reverse=True)
+        original_list = [score_list[0][0]]
+        original_list = sorted(original_list)
+        request.session['key']=original_list
+        stamps=[]
+        for i in range(1,len(original_list)+1):
+            shop = Shop.objects.get(in_area_num = i)
+            stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+            stamps.append(stamp)
+        return render(request,'stamp/mount.html',{'stamps':stamps})
+
+                
                 
                 
         return render(request,'stamp/mount.html')
