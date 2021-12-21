@@ -38,9 +38,15 @@ def signup_random(request):
             )
         
         login(request, user_data)
-        #random_list = random.sample(range(1,16), 5)
+        stamps = []
+        random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
+        for i in range(1,len(random_list)+1):
+            shop = Shop.objects.get(in_area_num = i)
+            stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+            stamps.append(stamp)
         
-    return render(request,'stamp/mount.html')
+        
+    return render(request,'stamp/mount.html',{'stamps':stamps})
 
 #アカウント引継ぎのための、メールアドレスとパスワード変更
 def change(request):
