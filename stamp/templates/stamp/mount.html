@@ -26,11 +26,7 @@
 
 
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <button type="submit" value="台紙の作成">スタートする</button>
-    </form>
-
+    <p><a href="{% url 'home' %}">スタートする  </a></p>
     <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
     
 </body>

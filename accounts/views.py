@@ -40,6 +40,7 @@ def signup_random(request):
         login(request, user_data)
         stamps = []
         random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
+        request.session['key']=random_list
         for i in range(1,len(random_list)+1):
             shop = Shop.objects.get(in_area_num = i)
             stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
