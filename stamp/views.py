@@ -30,7 +30,7 @@ def original_route(request):
                     if tags[k].name==checkbox_list[i]:
                         score_list[j-1][1]+=1
         score_list.sort(key=lambda x: x[1], reverse=True)
-        original_list = [score_list[0][0]]
+        original_list = [score_list[0][0],score_list[1][0]]
         original_list = sorted(original_list)
         request.session['key']=original_list
         stamps=[]
@@ -45,6 +45,7 @@ def random_route(request):
     user_data = request.user
     if request.method == 'POST':
         random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
+        random_list = sorted(random_list)
         request.session['key']=random_list
         stamps=[]
         for i in range(1,len(random_list)+1):
@@ -105,9 +106,10 @@ def stamp(request):
         if shop.keyword==input_keyword:
             stamp.judgement = True
         stamp.save()
+        context = {'stamp':stamp}
         
 
-    return render(request,'stamp/picturebook.html') 
+    return render(request,'stamp/get_stamp.html',context) 
 
            
 
