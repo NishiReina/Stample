@@ -13,5 +13,6 @@ urlpatterns = [
     path('route', views.route, name='route'),
     path('stamp', views.stamp, name='stamp'),
     path('detail/<uuid:shop_uuid>', views.detail, name='detail'),
+    path('to_change_page', views.to_change_page, name='to_change_page'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

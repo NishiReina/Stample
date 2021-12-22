@@ -8,7 +8,7 @@ def signup_original(request):
     if request.method == 'POST':
         user_data = User.objects.create(
             username = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])),
-            email = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)]))+"example.com",
+            email = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)]))+"@example.com",
             password = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])),
         )
         #中間テーブルに登録したい

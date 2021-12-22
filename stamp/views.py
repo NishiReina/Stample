@@ -115,6 +115,10 @@ def detail(request,shop_uuid):
     shop_data = {'shop':shop}
     return render(request,'stamp/detail.html',shop_data)
 
+def to_change_page(request):
+    return render(request,'stamp/change.html')
+
+
 
 
 
