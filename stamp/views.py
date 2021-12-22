@@ -105,9 +105,18 @@ def stamp(request):
         if shop.keyword==input_keyword:
             stamp.judgement = True
         stamp.save()
+        context = {"stamp":stamp}
         
 
-    return render(request,'stamp/picturebook.html') 
+    return render(request,'stamp/stamp_get.html',context)
+
+def detail(request,shop_uuid):
+    shop = Shop.objects.get(pk=shop_uuid)
+    shop_data = {'shop':shop}
+    return render(request,'stamp/detail.html',shop_data)
+
+
+
 
            
 

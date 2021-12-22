@@ -12,5 +12,6 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('route', views.route, name='route'),
     path('stamp', views.stamp, name='stamp'),
+    path('detail/<uuid:shop_uuid>', views.detail, name='detail'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

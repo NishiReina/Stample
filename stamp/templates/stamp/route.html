@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>mount</title>
+        <title>route</title>
     </head>
   <body>
     <h1>観光も楽しみながらスタンプラリー！</h1>
@@ -19,6 +19,7 @@
         <p>{{ stamp.shop.postalcode }}</p>
         <p>{{ stamp.shop.address }}</p>
         <p>{{ stamp.shop.item_name }}</p>
+        <p><a href="{% url 'detail' stamp.shop.uuid %}">詳細表示</a></p>
     </div>
     
     <!--詳細表示を押したときに出るモーダルの中身-->
@@ -55,6 +56,7 @@
         <p>{{ stamp.shop.postalcode }}</p>
         <p>{{ stamp.shop.address }}</p>
         <p>{{ stamp.shop.item_name }}</p>
+        <p><a href="{% url 'detail' stamp.shop.uuid %}">詳細表示</a></p>
     </div>
     <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
     <div>
@@ -86,9 +88,9 @@
     
 
     <div>
-        <button value="スタンプを押す">スタンプを押す</button>
+      <button value="スタンプを押す">スタンプを押す</button>
 
-    <form action="" method="POST">
+    <form action="{% url 'stamp' %}" method="POST">
         {% csrf_token %}
         <p>キーワードを入力<input type="text" name="keyword"></p>
         <p>お店の名前を入力<input type="text" name="shop_name"></p>

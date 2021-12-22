@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>detail</title>
+    </head>
+  <body>
+    <div>
+        <p>{{ shop.in_area_num }}</p>
+        <p>{{ shop.category.name }}</p>
+        <p>{{ shop.shop_name }}</p>
+        <p>{{ shop.catchphrase }}</p>
+        <img src="{{ shop.image.url }}"/>
+  
+        {% for tag in shop.tags.all %}
+        <p>#{{ tag.name }}</p>
+        {% endfor %}
+  
+        <p>{{ shop.shop_detail }}</p>
+        <p>{{ shop.item_name }}</p>
+        <p>{{ shop.opening }}   {{ shop.closed }}</p>
+        <p>{{ shop.contact }}</p>
+        <img src="{{ shop.address_image.url }}"/>
+        <p>{{ shop.url }}</p>
+        <p>{{ shop.instagram }}</p>
+        <p>{{ shop.address_twitter }}</p>
+  
+      </div>
+
+
+    
+    
+    <p><a href="{% url 'home' %}">ホーム</a></p>
+    <p><a href="{% url 'route' %}">ルート</a></p>
+    <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
+    
+</body>
+</html>
