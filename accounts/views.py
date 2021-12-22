@@ -54,6 +54,6 @@ def change(request):
     user_data = request.user
     if request.method == 'POST':
         user_data.email = request.POST.get('email')
-        user_data.password =request.POST.get('password')
+        user_data.set_password(request.POST.get('password'))
         user_data.save()
-        return render(request,'stamp/index.html')
+        return render(request,'stamp/home.html')
