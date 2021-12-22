@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>mount</title>
+    </head>
+  <body>
+    <h1>台紙作成完了</h1>
+    {% for stamp in stamps %}
+    {% if stamp.judgement %}<!--スタンプの画像うつす-->
+    <div>
+        <img src="{{ stamp.shop.stamp_image.url }}"/>
+        <p>{{ stamp.shop.in_area_num }}</p>
+        <p>{{ stamp.shop.shop_name }}</p>
+    </div>
+
+    {% else %}<!--スタンプの画像うつさない-->
+    <div>
+      <img/>
+      <p>{{ stamp.shop.in_area_num }}</p>
+      <p>{{ stamp.shop.shop_name }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+
+
+    <p><a href="{% url 'home' %}">スタートする  </a></p>
+
+    
+    <p><a href="#">ホーム</a></p>
+    <p><a href="#">ルート</a></p>
+    <p><a href="#">ずかん</a></p>
+    
+</body>
+</html>

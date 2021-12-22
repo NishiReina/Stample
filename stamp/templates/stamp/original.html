@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>original</title>
+    </head>
+  <body>
+    <h1>興味のあるものは？</h1>
+    <p>複数選択可<br>
+        <input type="checkbox" name="tag_and_category" value="食べ物">食べ物
+        <input type="checkbox" name="tag_and_category" value="インテリア">インテリア
+        <input type="checkbox" name="tag_and_category" value="写真"> 写真
+        <input type="checkbox" name="tag_and_category" value="わくわく">わくわく
+        <input type="checkbox" name="tag_and_category" value="お土産">お土産
+        </p>
+    <form action="{% url 'original_route' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" value="台紙を作成">台紙を作成</button>
+    </form>
+
+
+    <p><a href="#">ホーム</a></p>
+    <p><a href="#">ルート</a></p>
+    <p><a href="#">ずかん</a></p>
+    
+    
+</body>
+</html>
