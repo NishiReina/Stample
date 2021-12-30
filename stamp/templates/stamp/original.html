@@ -6,15 +6,17 @@
     </head>
   <body>
     <h1>興味のあるものは？</h1>
+    <form action="{% url 'original_route' %}" method="POST">
     <p>複数選択可<br>
+        {% csrf_token %}
         <input type="checkbox" name="tag_and_category" value="食べ物">食べ物
         <input type="checkbox" name="tag_and_category" value="インテリア">インテリア
         <input type="checkbox" name="tag_and_category" value="写真"> 写真
         <input type="checkbox" name="tag_and_category" value="わくわく">わくわく
         <input type="checkbox" name="tag_and_category" value="お土産">お土産
         </p>
-    <form action="{% url 'original_route' %}" method="POST">
-        {% csrf_token %}
+    
+        
         <button type="submit" value="台紙を作成">台紙を作成</button>
     </form>
 
