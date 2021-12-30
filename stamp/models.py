@@ -19,10 +19,13 @@ class BaseModel(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=30,verbose_name="タグ")
+    def __str__(self):
+        return self.name
 
 class Category(models.Model):
     name = models.CharField(max_length=30,verbose_name="カテゴリ―")
-
+    def __str__(self):
+        return self.name
 
 class Shop(BaseModel):
     shop_name = models.CharField(max_length=30,verbose_name="店の名前")
@@ -50,6 +53,9 @@ class Shop(BaseModel):
     tags = models.ManyToManyField(Tag,verbose_name="タグ",related_name="shops")
 
     stamp = models.ManyToManyField(get_user_model(),verbose_name="スタンプ",related_name="shops",through='Stamp')
+
+    def __str__(self):
+        return self.shop_name
 
 
 class Stamp(BaseModel):
