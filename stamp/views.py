@@ -112,6 +112,7 @@ def stamp(request):
             stamp.save()
             context = {"stamp":stamp}
             return render(request,'stamp/stamp_get.html',context)
+
         
 def detail(request,shop_uuid):
     shop = Shop.objects.get(pk=shop_uuid)
