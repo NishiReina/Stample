@@ -19,10 +19,10 @@ def original_route(request):
     user_data = request.user
     if request.method == 'POST':
         checkbox_list=request.POST.getlist("tag_and_category")
-        score_list=[[1,0],[2,0]]#score_list=[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0]]
+        score_list=[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0]]
 
         for i in range(len(checkbox_list)):
-            for j in range(1,3):#for j in range(1,16):
+            for j in range(1,16):
                 shop = Shop.objects.get(in_area_num=j)
                 tags =  shop.tags.all()
 
@@ -34,7 +34,7 @@ def original_route(request):
                         score_list[j-1][1]+=1
 
         score_list=sorted(score_list,key=lambda x: x[1], reverse=True)
-        original_list = [score_list[0][0]]#original_list = [score_list[0][0],score_list[1][0],score_list[2][0],score_list[3][0],score_list[4][0]]
+        original_list = [score_list[0][0],score_list[1][0],score_list[2][0],score_list[3][0],score_list[4][0]]
         original_list=sorted(original_list)
         request.session['key']=original_list
         stamps=[]
@@ -48,7 +48,7 @@ def original_route(request):
 def random_route(request):
     user_data = request.user
     if request.method == 'POST':
-        random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
+        random_list = random.sample(range(1,16), 5)
         request.session['key']=random_list
         stamps=[]
         for i in range(1,len(random_list)+1):

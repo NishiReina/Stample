@@ -12,7 +12,7 @@ def signup_original(request):
             password = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])),
         )
         #中間テーブルに登録したい
-        for i in range(1,3):#for i in range(1,16):
+        for i in range(1,16):
             Stamp.objects.create(
                 shop = Shop.objects.get(in_area_num=i),
                 user = user_data,
@@ -31,7 +31,7 @@ def signup_random(request):
             password = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(20)])),
         )
         #中間テーブルに登録したい
-        for i in range(1,3):#for i in range(1,16):
+        for i in range(1,16):
             Stamp.objects.create(
                 shop = Shop.objects.get(in_area_num=i),
                 user = user_data,
@@ -39,7 +39,7 @@ def signup_random(request):
         
         login(request, user_data)
         stamps = []
-        random_list = random.sample(range(1,3), 2)#random_list = random.sample(range(1,16), 5)
+        random_list = random.sample(range(1,16), 5)
         request.session['key']=random_list
         for i in range(1,len(random_list)+1):
             shop = Shop.objects.get(in_area_num = i)

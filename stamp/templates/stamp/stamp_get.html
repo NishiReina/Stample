@@ -6,7 +6,7 @@
     </head>
   <body>
     <h1>スタンプGET</h1>
-    <img src="{{ stamp.shop.image.url }}"/>
+    <img src="{{ stamp.shop.stamp_image.url }}"/>
     <p>{{ stamp.shop.item_name }}</p>
     <p>{{ stamp.shop.category.name }}</p>
     <p>{{ stamp.shop.shop_name }}</p>
@@ -23,7 +23,7 @@
     <p><a href="{% url 'home' %}">ホーム</a></p>
     <p><a href="{% url 'route' %}">ルート</a></p>
     <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
-    <p><a href="{% url 'to_change_page' %}">ログイン</a></p>
+    <p><a href="{% url 'login' %}">ログインする</a></p>
     
 </body>
 </html>

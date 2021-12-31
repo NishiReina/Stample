@@ -9,12 +9,13 @@
       {{ form.as_p }}
       <input type="submit" value="ログインする" />
     </form>
-
+    <p>新規登録の方はこちら</p>
+    <p><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
     <p><a href="{% url 'index' %}">index</a></p>
 
     <p><a href="#">ホーム</a></p>
     <p><a href="#">ルート</a></p>
     <p><a href="#">ずかん</a></p>
-    <p><a href="{% url 'to_change_page' %}">ログイン</a></p>
+    <p><a href="#">ログイン</a></p>
   </body>
 </html>
