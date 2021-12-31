@@ -12,6 +12,8 @@
         {% csrf_token %}
         <p>メールアドレス（半角英数字）<input type="text" name="email"></p>
         <p>パスワード（半角英数字）<input type="text" name="password"></p>
+        <p>パスワード確認のためもう一度<input type="text" name="password2"></p>
+        <p>{{ message }}</p>
         <button type="submit" value="登録する">登録する</button>
     </form>
     

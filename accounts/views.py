@@ -54,7 +54,20 @@ def signup_random(request):
 def change(request):
     user_data = request.user
     if request.method == 'POST':
-        user_data.email = request.POST.get('email')
-        user_data.set_password(request.POST.get('password'))
-        user_data.save()
-        return render(request,'stamp/home.html')
+        if request.POST.get('password')==request.POST.get('password2'):
+            user_data.email = request.POST.get('email')
+            user_data.set_password(request.POST.get('password'))
+            user_data.save()
+
+            stamp_list=request.session['key']
+            stamps = []
+
+            for i in range(len(stamp_list)):
+                shop = Shop.objects.get(in_area_num = stamp_list[i])
+                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+                stamps.append(stamp)
+            return render(request,'stamp/home.html',{'stamps':stamps})
+            
+        elif request.POST.get('password')!=request.POST.get('password2'):
+            context={'message':"パスワードをもう一度入力してください"}
+            return render(request,'stamp/change.html',context)

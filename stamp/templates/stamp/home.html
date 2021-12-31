@@ -35,6 +35,7 @@
         {% csrf_token %}
         <p>キーワードを入力<input type="text" name="keyword"></p>
         <p>お店の名前を入力<input type="text" name="shop_name"></p>
+        <p>{{ message }}</p>
         <button type="submit" value="スタンプを押す">スタンプを押す</button>
     </form>
     </div>

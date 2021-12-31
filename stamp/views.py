@@ -91,10 +91,10 @@ def user_picturebook(request):
 
 
     count=0
-    for i in range(0,2):
+    for i in range(0,15):
         if (stamps[i].judgement)==True:
             count+=1
-    collection_rate=(count/2)*100
+    collection_rate=(count/15)*100
     collection_rate=int(collection_rate)
     context = {'stamps':stamps,
                    'collection_rate':collection_rate}#stampのテーブル特定
@@ -109,12 +109,10 @@ def stamp(request):
         stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
         if shop.keyword==input_keyword:
             stamp.judgement = True
-        stamp.save()
-        context = {"stamp":stamp}
+            stamp.save()
+            context = {"stamp":stamp}
+            return render(request,'stamp/stamp_get.html',context)
         
-
-    return render(request,'stamp/stamp_get.html',context)
-
 def detail(request,shop_uuid):
     shop = Shop.objects.get(pk=shop_uuid)
     shop_data = {'shop':shop}
