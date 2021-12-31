@@ -3,9 +3,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import Stamp,Shop
 import random
-# Create your views here.
 
-# Create your views here.
+
+
 def index(request):
     return render(request, 'stamp/index.html')
 
@@ -100,7 +100,7 @@ def user_picturebook(request):
                    'collection_rate':collection_rate}#stampのテーブル特定
     return render(request,'stamp/picturebook.html',context)
 
-def stamp(request):
+def stamp_to_home(request):
     user_data = request.user
     if request.method == 'POST':
         input_shop_name =request.POST.get('shop_name')
@@ -112,6 +112,70 @@ def stamp(request):
             stamp.save()
             context = {"stamp":stamp}
             return render(request,'stamp/stamp_get.html',context)
+        elif shop.keyword!=input_keyword:
+            stamp_list=request.session['key']
+            user_data = request.user
+            stamps = []
+
+            for i in range(len(stamp_list)):
+                shop = Shop.objects.get(in_area_num = stamp_list[i])
+                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+                stamps.append(stamp)
+                context={'stamps':stamps,
+                'message':"キーワードが間違っています"}
+            return render(request,'stamp/home.html',context)
+def stamp_to_route(request):
+    user_data = request.user
+    if request.method == 'POST':
+        input_shop_name =request.POST.get('shop_name')
+        input_keyword = request.POST.get('keyword')
+        shop = Shop.objects.get(shop_name=input_shop_name)
+        stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
+        if shop.keyword==input_keyword:
+            stamp.judgement = True
+            stamp.save()
+            context = {"stamp":stamp}
+            return render(request,'stamp/stamp_get.html',context)
+        elif shop.keyword!=input_keyword:
+            user_data = request.user
+            stamps = Stamp.objects.filter(user=user_data.uuid)
+            count=0
+            for i in range(0,15):
+                if (stamps[i].judgement)==True:
+                    count+=1
+            collection_rate=(count/15)*100
+            collection_rate=int(collection_rate)
+            context = {'stamps':stamps,
+                        'collection_rate':collection_rate,
+                        'message':"キーワードが間違っています"}#stampのテーブル特定
+            return render(request,'stamp/route.html',context)
+
+
+def stamp_to_picturebook(request):
+    user_data = request.user
+    if request.method == 'POST':
+        input_shop_name =request.POST.get('shop_name')
+        input_keyword = request.POST.get('keyword')
+        shop = Shop.objects.get(shop_name=input_shop_name)
+        stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
+        if shop.keyword==input_keyword:
+            stamp.judgement = True
+            stamp.save()
+            context = {"stamp":stamp}
+            return render(request,'stamp/stamp_get.html',context)
+        elif shop.keyword!=input_keyword:
+            stamp_list=request.session['key']
+            user_data = request.user
+            stamps = []
+
+            for i in range(len(stamp_list)):
+                shop = Shop.objects.get(in_area_num = stamp_list[i])
+                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+                stamps.append(stamp)
+                context={'stamps':stamps,
+                'message':"キーワードが間違っています"}
+            return render(request,'stamp/picturebook.html',context)
+
 
         
 def detail(request,shop_uuid):

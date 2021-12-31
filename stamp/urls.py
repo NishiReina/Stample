@@ -11,7 +11,9 @@ urlpatterns = [
     path('user_picturebook', views.user_picturebook, name='user_picturebook'),
     path('home', views.home, name='home'),
     path('route', views.route, name='route'),
-    path('stamp', views.stamp, name='stamp'),
+    path('stamp_to_route', views.stamp_to_route, name='stamp_to_route'),
+    path('stamp_to_picturebook', views.stamp_to_picturebook, name='stamp_to_picturebook'),
+    path('stamp_to_home', views.stamp_to_home, name='stamp_to_home'),
     path('detail/<uuid:shop_uuid>', views.detail, name='detail'),
     path('to_change_page', views.to_change_page, name='to_change_page'),
     

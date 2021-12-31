@@ -31,7 +31,7 @@
     <div>
       <button value="スタンプを押す">スタンプを押す</button>
 
-    <form action="{% url 'stamp' %}" method="POST">
+    <form action="{% url 'stamp_to_home' %}" method="POST">
         {% csrf_token %}
         <p>キーワードを入力<input type="text" name="keyword"></p>
         <p>お店の名前を入力<input type="text" name="shop_name"></p>

@@ -58,7 +58,7 @@ def change(request):
             user_data.email = request.POST.get('email')
             user_data.set_password(request.POST.get('password'))
             user_data.save()
-
+            login(request, user_data)
             stamp_list=request.session['key']
             stamps = []
 
@@ -71,3 +71,5 @@ def change(request):
         elif request.POST.get('password')!=request.POST.get('password2'):
             context={'message':"パスワードをもう一度入力してください"}
             return render(request,'stamp/change.html',context)
+
+        
