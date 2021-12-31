@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
 import string, random
 from accounts.models import User#勝手に初めて、勝手にログインする機能
 from stamp.models import Stamp,Shop
@@ -58,15 +58,9 @@ def change(request):
             user_data.email = request.POST.get('email')
             user_data.set_password(request.POST.get('password'))
             user_data.save()
-            login(request, user_data)
-            stamp_list=request.session['key']
-            stamps = []
-
-            for i in range(len(stamp_list)):
-                shop = Shop.objects.get(in_area_num = stamp_list[i])
-                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
-                stamps.append(stamp)
-            return render(request,'stamp/home.html',{'stamps':stamps})
+            
+            logout(request)
+            return render(request,'stamp/index.html')
             
         elif request.POST.get('password')!=request.POST.get('password2'):
             context={'message':"パスワードをもう一度入力してください"}
