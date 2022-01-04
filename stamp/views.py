@@ -33,9 +33,11 @@ def original_route(request):
                     if tags[k].name==checkbox_list[i]:
                         score_list[j-1][1]+=1
 
+
         score_list=sorted(score_list,key=lambda x: x[1], reverse=True)
         original_list = [score_list[0][0],score_list[1][0],score_list[2][0],score_list[3][0],score_list[4][0]]
         original_list=sorted(original_list)
+       
         request.session['key']=original_list
         stamps=[]
         for i in range(len(original_list)):
@@ -48,8 +50,10 @@ def original_route(request):
 def random_route(request):
     user_data = request.user
     if request.method == 'POST':
+
         random_list = random.sample(range(1,16), 5)
         random_list=sorted(random_list)
+
         request.session['key']=random_list
         stamps=[]
         for i in range(len(random_list)):
@@ -109,6 +113,7 @@ def stamp_to_home(request):
         stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
         if shop.keyword==input_keyword:
             stamp.judgement = True
+
             stamp.save()
             context = {"stamp":stamp}
             return render(request,'stamp/stamp_get.html',context)
@@ -190,6 +195,5 @@ def to_change_page(request):
 
 
 
-           
 
 
