@@ -1,0 +1,29 @@
+<html lang="ja"><head><meta charset="utf-8">
+<head>
+  
+</head>
+<body>
+    <h1>Login</h1>
+{% if form.errors %}
+<p>メールアドレスかパスワードが間違っています。もう一度入力してください。</p>
+{% endif %}
+    
+    <form method="post">
+      {% csrf_token %}
+      
+      <p><label for="id_username">メールアドレス</label> <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username"></p>
+      <p><label for="id_password">パスワード</label> <input type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
+      <input type="submit" value="ログインする">
+    </form>
+    <p>新規登録の方はこちら</p>
+    <p><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
+    <p><a href="{% url 'index' %}">index</a></p>
+
+    <p><a href="#">ホーム</a></p>
+    <p><a href="#">ルート</a></p>
+    <p><a href="#">ずかん</a></p>
+    <p><a href="#">ログイン</a></p>
+  </body>
+</html>
+
+

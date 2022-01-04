@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>index</title>
+    </head>
+  <body>
+    <h1>すたんぷるへようこそ！</h1>
+
+    {% if user.is_authenticated %}
+    <form action="{% url 'original' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" value="オリジナルで作成">オリジナルで作成</button>
+    </form>
+    <form action="{% url 'random_route' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" value="ランダムで作成">ランダム作成</button>
+    </form>
+
+    <a href="{% url 'logout' %}">logout</a>
+
+
+    {% else %}
+    
+
+    <form action="{% url 'accounts:signup_original' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" value="オリジナルで作成">オリジナルで作成</button>
+    </form>
+    <form action="{% url 'accounts:signup_random' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" value="ランダムで作成">ランダム作成</button>
+    </form>
+  
+    <p><a href="{% url 'login' %}">ログイン</a></p>
+    {% endif %}
+
+    <p><a href="#">ホーム</a></p>
+    <p><a href="#">ルート</a></p>
+    <p><a href="#">ずかん</a></p>
+    <p><a href="#">ログイン</a></p>
+    
+    
+    
+</body>
+</html>
