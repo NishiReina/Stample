@@ -114,7 +114,6 @@ def stamp_to_home(request):
             return render(request,'stamp/stamp_get.html',context)
         elif shop.keyword!=input_keyword:
             stamp_list=request.session['key']
-            user_data = request.user
             stamps = []
 
             for i in range(len(stamp_list)):
@@ -137,17 +136,16 @@ def stamp_to_route(request):
             context = {"stamp":stamp}
             return render(request,'stamp/stamp_get.html',context)
         elif shop.keyword!=input_keyword:
-            user_data = request.user
-            stamps = Stamp.objects.filter(user=user_data.uuid)
-            count=0
-            for i in range(0,15):
-                if (stamps[i].judgement)==True:
-                    count+=1
-            collection_rate=(count/15)*100
-            collection_rate=int(collection_rate)
-            context = {'stamps':stamps,
-                        'collection_rate':collection_rate,
-                        'message':"キーワードが間違っています"}#stampのテーブル特定
+            stamp_list=request.session['key']
+            
+            stamps = []
+
+            for i in range(len(stamp_list)):
+                shop = Shop.objects.get(in_area_num = stamp_list[i])
+                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
+                stamps.append(stamp)
+                context={'stamps':stamps,
+                'message':"キーワードが間違っています"}
             return render(request,'stamp/route.html',context)
 
 
@@ -158,22 +156,32 @@ def stamp_to_picturebook(request):
         input_keyword = request.POST.get('keyword')
         shop = Shop.objects.get(shop_name=input_shop_name)
         stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
+        hint=''
+        for i in range(len(shop.keyword)):
+            if i%2==0:
+                hint+=shop.keyword[i]
+            else:
+                hint+="○"
+
         if shop.keyword==input_keyword:
             stamp.judgement = True
             stamp.save()
             context = {"stamp":stamp}
             return render(request,'stamp/stamp_get.html',context)
         elif shop.keyword!=input_keyword:
-            stamp_list=request.session['key']
-            user_data = request.user
-            stamps = []
+            stamps = Stamp.objects.filter(user=user_data.uuid)
 
-            for i in range(len(stamp_list)):
-                shop = Shop.objects.get(in_area_num = stamp_list[i])
-                stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
-                stamps.append(stamp)
-                context={'stamps':stamps,
-                'message':"キーワードが間違っています"}
+
+            count=0
+            for i in range(0,15):
+                if (stamps[i].judgement)==True:
+                    count+=1
+            collection_rate=(count/15)*100
+            collection_rate=int(collection_rate)
+            context = {'stamps':stamps,
+                        'collection_rate':collection_rate,
+                        'message':"キーワードが間違っています",
+                        'hint':hint}
             return render(request,'stamp/picturebook.html',context)
 
 
