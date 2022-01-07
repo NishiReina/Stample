@@ -1,31 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>home</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/change.css' %}">
     </head>
   <body>
-    
-      <h1>ユーザー登録</h1>
+    <div class="change">
+        <main class="main">
+            <div class="change__ttl">
+                <h1 class="change__ttl-item">ユーザー登録</h1>
+            </div>
 
-    <form action="{% url 'accounts:change' %}" method="POST">
-        {% csrf_token %}
-        <p>メールアドレス（半角英数字）<input type="text" name="email"></p>
-        <p>パスワード（半角英数字）<input type="password" name="password"></p>
-        <p>パスワード確認のためもう一度<input type="password" name="password2"></p>
-        <p>{{ message }}</p>
-        <button type="submit" value="登録する">登録する</button>
-    </form>
-
-    <p><a href="{% url 'home' %}">ホーム</a></p>
-    <p><a href="{% url 'route' %}">ルート</a></p>
-    <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-    
-  
-  
-  
-    
-    
+            <form class="change__form" action="{% url 'accounts:change' %}" method="POST">
+                {% csrf_token %}
+                <p class="change__mail">メールアドレス（半角英数字）<input class="change__input" type="text" name="email"></p>
+                <div class="change__pass">
+                    <p class="change__first">パスワード（半角英数字）<input class="change__input" type="password" name="password"></p>
+                    <p class="change__confirm">パスワード確認のためもう一度<input class="change__input" type="password" name="password2"></p>
+                </div>
+                <p>{{ message }}</p>
+                <button class="change__btn" type="submit" value="登録する">登録する</button>
+            </form>
+        </main>
+         
+        <footer class="footer">
+            <ul class="footer__list">
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+              </li>
+            </ul>
+        </footer>
+    </div>  
 </body>
 </html>
