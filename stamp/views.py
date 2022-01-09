@@ -156,12 +156,15 @@ def stamp_to_picturebook(request):
         input_keyword = request.POST.get('keyword')
         shop = Shop.objects.get(shop_name=input_shop_name)
         stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
-        hint=''
+        """
+         hint=''
         for i in range(len(shop.keyword)):
             if i%2==0:
                 hint+=shop.keyword[i]
             else:
                 hint+="○"
+        """
+       
 
         if shop.keyword==input_keyword:
             stamp.judgement = True
@@ -181,7 +184,7 @@ def stamp_to_picturebook(request):
             context = {'stamps':stamps,
                         'collection_rate':collection_rate,
                         'message':"キーワードが間違っています",
-                        'hint':hint}
+                        }
             return render(request,'stamp/picturebook.html',context)
 
 
