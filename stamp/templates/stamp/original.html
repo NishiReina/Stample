@@ -1,47 +1,64 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>original</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/original.css' %}">
     </head>
   <body>
-    <h1>興味のあるものは？</h1>
-    <form action="{% url 'original_route' %}" method="POST">
-    <p>複数選択可<br>
-        {% csrf_token %}
-        <input type="checkbox" name="tag_and_category" value="食べ物">#食べ物
-        <input type="checkbox" name="tag_and_category" value="インテリア">#インテリア
-        <input type="checkbox" name="tag_and_category" value="ファッション・アクセサリー">#ファッション・アクセサリー
-        <input type="checkbox" name="tag_and_category" value="日用品">#日用品
-        <input type="checkbox" name="tag_and_category" value="雑貨">#雑貨
-        <input type="checkbox" name="tag_and_category" value="おしゃれ">#おしゃれ
-        <input type="checkbox" name="tag_and_category" value="モダン">#モダン
-        <input type="checkbox" name="tag_and_category" value="こだわり">#こだわり
-        <input type="checkbox" name="tag_and_category" value="歴史を感じる">#歴史を感じる
-        <input type="checkbox" name="tag_and_category" value="じっくり">#じっくり
-        <input type="checkbox" name="tag_and_category" value="きらきら">#きらきら
-        <input type="checkbox" name="tag_and_category" value="伝統">#伝統
-        <input type="checkbox" name="tag_and_category" value="落ち着き">#落ち着き
-        <input type="checkbox" name="tag_and_category" value="おいしそう">#おいしそう
-        <input type="checkbox" name="tag_and_category" value="わくわく">#わくわく
-        <input type="checkbox" name="tag_and_category" value="お土産">#お土産
-        <input type="checkbox" name="tag_and_category" value="かわいい">#かわいい
-        <input type="checkbox" name="tag_and_category" value="和食">#和食
-        <input type="checkbox" name="tag_and_category" value="ねこ">#ねこ
-        <input type="checkbox" name="tag_and_category" value="いぬ">#いぬ
-        <input type="checkbox" name="tag_and_category" value="その他">#その他
-        </p>
-    
-        
-        <button type="submit" value="台紙を作成">台紙を作成</button>
-    </form>
+      <div class="original">
+        <main class="main">
+            <h1 class="original__ttl">興味のあるものは？</h1>
+            <div class="original__form">
+                <form action="{% url 'original_route' %}" method="POST">
+                    <p class="original__form-ttl">複数選択可</p>
+                        {% csrf_token %}
+                        <input type="checkbox" name="tag_and_category" id="radio1" class="original__form-input" value="食べ物"><label class="original__form-label" for="radio1">#食べ物</label>
+                        <input type="checkbox" name="tag_and_category" id="radio2" class="original__form-input" value="インテリア"><label class="original__form-label" for="radio2">#インテリア</label>
+                        <input type="checkbox" name="tag_and_category" id="radio3" class="original__form-input" value="ファッション・アクセサリー"><label class="original__form-label" for="radio3">#ファッション・アクセサリー</label>
+                        <input type="checkbox" name="tag_and_category" id="radio4" class="original__form-input" value="日用品"><label class="original__form-label" for="radio4">#日用品</label>
+                        <input type="checkbox" name="tag_and_category" id="radio5" class="original__form-input" value="雑貨"><label class="original__form-label" for="radio5">#雑貨</label>
+                        <input type="checkbox" name="tag_and_category" id="radio6" class="original__form-input" value="おしゃれ"><label class="original__form-label" for="radio6">#おしゃれ</label>
+                        <input type="checkbox" name="tag_and_category" id="radio7" class="original__form-input" value="モダン"><label class="original__form-label" for="radio7">#モダン</label>
+                        <input type="checkbox" name="tag_and_category" id="radio8" class="original__form-input" value="こだわり"><label class="original__form-label" for="radio8">#こだわり</label>
+                        <input type="checkbox" name="tag_and_category" id="radio9" class="original__form-input" value="歴史を感じる"><label class="original__form-label" for="radio9">#歴史を感じる</label>
+                        <input type="checkbox" name="tag_and_category" id="radio10" class="original__form-input" value="じっくり"><label class="original__form-label" for="radio10">#じっくり</label>
+                        <input type="checkbox" name="tag_and_category" id="radio11" class="original__form-input" value="きらきら"><label class="original__form-label" for="radio11">#きらきら</label>
+                        <input type="checkbox" name="tag_and_category" id="radio12" class="original__form-input" value="伝統"><label class="original__form-label" for="radio12">#伝統</label>
+                        <input type="checkbox" name="tag_and_category" id="radio13" class="original__form-input" value="落ち着き"><label class="original__form-label" for="radio13">#落ち着き</label>
+                        <input type="checkbox" name="tag_and_category" id="radio14" class="original__form-input" value="おいしそう"><label class="original__form-label" for="radio14">#おいしそう</label>
+                        <input type="checkbox" name="tag_and_category" id="radio15" class="original__form-input" value="わくわく"><label class="original__form-label" for="radio15">#わくわく</label>
+                        <input type="checkbox" name="tag_and_category" id="radio16" class="original__form-input" value="お土産"><label class="original__form-label" for="radio16">#お土産</label>
+                        <input type="checkbox" name="tag_and_category" id="radio17" class="original__form-input" value="かわいい"><label class="original__form-label" for="radio17">#かわいい</label>
+                        <input type="checkbox" name="tag_and_category" id="radio18" class="original__form-input" value="和食"><label class="original__form-label" for="radio18">#和食</label>
+                        <input type="checkbox" name="tag_and_category" id="radio19" class="original__form-input" value="ねこ"><label class="original__form-label" for="radio19">#ねこ</label>
+                        <input type="checkbox" name="tag_and_category" id="radio20" class="original__form-input" value="いぬ"><label class="original__form-label" for="radio20">#いぬ</label>
+                        <input type="checkbox" name="tag_and_category" id="radio21" class="original__form-input" value="その他"><label class="original__form-label" for="radio21">#その他</label>
+                        <button class="original__form-btn" type="submit" value="台紙を作成">台紙を作成</button>
+                </form>
+            </div>
+            
+        </main>
+        <footer class="footer">
+            <ul class="footer__list">
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+              </li>
+              <li class="footer__list-item">
+                <a href="#"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+              </li>
+            </ul>
+          </footer>
+      </div>
 
-
-    <p><a href="#">ホーム</a></p>
-    <p><a href="#">ルート</a></p>
-    <p><a href="#">ずかん</a></p>
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-    
-    
 </body>
 </html>

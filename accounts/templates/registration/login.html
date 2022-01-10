@@ -1,29 +1,52 @@
-<html lang="ja"><head><meta charset="utf-8">
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-    <h1>Login</h1>
-{% if form.errors %}
-<p>メールアドレスかパスワードが間違っています。もう一度入力してください。</p>
-{% endif %}
-    
-    <form method="post">
-      {% csrf_token %}
-      
-      <p><label for="id_username">メールアドレス</label> <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username"></p>
-      <p><label for="id_password">パスワード</label> <input type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
-      <input type="submit" value="ログインする">
-    </form>
-    <p>新規登録の方はこちら</p>
-    <p><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
-    <p><a href="{% url 'index' %}">index</a></p>
-
-    <p><a href="#">ホーム</a></p>
-    <p><a href="#">ルート</a></p>
-    <p><a href="#">ずかん</a></p>
-    <p><a href="#">ログイン</a></p>
-  </body>
+  <div class="login">
+    <main class="main">
+      <div class="login__ttl">
+        <h1 class="login__ttl-item">ログイン</h1>
+      </div>
+      {% if form.errors %}
+      <p>メールアドレスかパスワードが間違っています。もう一度入力してください。</p>
+      {% endif %}
+          
+          <form class="login__form" method="post">
+            {% csrf_token %}
+            
+            <p class="login__mail"><label for="id_username">メールアドレス</label> <input class="login__input" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username"></p>
+            <p class="login__pass"><label for="id_password">パスワード</label> <input class="login__input" type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
+            <input type="submit" value="ログインする">
+          </form>
+          <p>新規登録の方はこちら</p>
+          <p><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
+          <p><a href="{% url 'index' %}">index</a></p>
+    </main>
+    <footer class="footer">
+      <ul class="footer__list">
+        <li class="footer__list-item">
+          <a href="#"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+        </li>
+        <li class="footer__list-item">
+          <a href="#"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+        </li>
+        <li class="footer__list-item">
+          <a href="#"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+        </li>
+        <li class="footer__list-item">
+          <a href="#"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+        </li>
+      </ul>
+  </footer>
+  </div>
+</body>
 </html>
 
 

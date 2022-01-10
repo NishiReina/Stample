@@ -1,0 +1,86 @@
+body{
+    width: 446px;
+    height: 720px;
+    margin: 0 auto;
+}
+
+.picturebook{
+    width: 446px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.main{
+    background-image: url("../img/zukan__bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 446px;
+    height: 640px;
+    margin: 0 auto;
+}
+
+.picturebook__ttl{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.picturebook__ttl-h1{
+    font-size: 21px;
+    color: #DE2431;
+    margin-bottom: 20px;
+}
+
+.picturebook__ttl-h2{
+    font-size: 48px;
+    color: #DE2431;
+}
+
+.picturebook__stamps{
+    width: 100%;
+    height: 420px;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.picturebook__stamp{
+    width: 25%;
+    margin: 0px 15px;
+    font-size: 13px;
+    color: white;
+}
+
+.picturebook__modal{
+    display: none;
+}
+
+.picturebook__modal-detail{
+    display: none;
+}
+
+.picturebook__modal-form{
+    display: none;
+}
+
+.picturebook__btn{
+    position:fixed;
+    left:auto;
+    top:0;
+    margin: 400px 0 0 0;
+    font: normal normal bold 21px/34px Yu Gothic;
+    font-size: 20px;
+    width: 220px;
+    height: 40px;
+    /* margin-top: 200px; */
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    background-color: #377FA6;
+    box-shadow: 3px 3px 3px #0000003B;
+    border-radius: 27px;
+}

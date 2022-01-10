@@ -1,38 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>mount</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mount.css' %}">
     </head>
   <body>
-    <h1>台紙作成完了</h1>
-    {% for stamp in stamps %}
-    {% if stamp.judgement %}<!--スタンプの画像うつす-->
-    <div>
-        <img src="{{ stamp.shop.stamp_image.url }}"/>
-        <p>{{ stamp.shop.in_area_num }}</p>
-        <p>{{ stamp.shop.shop_name }}</p>
-    </div>
-
-    {% else %}<!--スタンプの画像うつさない-->
-    <div>
-      <img/>
-      <p>{{ stamp.shop.in_area_num }}</p>
-      <p>{{ stamp.shop.shop_name }}</p>
-    </div>
-    {% endif %}
-    {% endfor %}
-
-
-
-
-    <p><a href="{% url 'home' %}">スタートする  </a></p>
-
+    <div class="mount">
+      <main class="main">
+        <div class="mount__ttl">
+          <h1 class="mount__ttl-item">台紙作成完了!</h1>
+        </div>
+        <div class="mount__base">
+          <div class="mount__map">
+            {% for stamp in stamps %}
+            {% if stamp.judgement %}<!--スタンプの画像うつす-->
+            <div class="mount__map-item">
+                <img src="{{ stamp.shop.stamp_image.url }}"/>
+                <p>{{ stamp.shop.stamp_image.url }}</p>
+                <span class="mount__map-areanum">{{ stamp.shop.in_area_num }}</span>
+                <span class="mount__map-shopname">{{ stamp.shop.shop_name }}</span>
+            </div>
     
-    <p><a href="#">ホーム</a></p>
-    <p><a href="#">ルート</a></p>
-    <p><a href="#">ずかん</a></p>
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-    
+            {% else %}<!--スタンプの画像うつさない-->
+            <div class="mount__map-item">
+              <img src="{% static 'img/stamp__bg.png' %}">
+              <span class="mount__map-areanum">{{ stamp.shop.in_area_num }}</span>
+              <span class="mount__map-shopname">{{ stamp.shop.shop_name }}</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <p class="mount__btn"><a class="mount__btn-item" href="{% url 'home' %}">スタートする  </a></p>
+        </div>
+      </main>
+      <footer class="footer">
+        <ul class="footer__list">
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
 </body>
 </html>

@@ -1,0 +1,59 @@
+body{
+    width: 446px;
+    height: 720px;
+    margin: 0 auto;
+}
+
+.mount{
+    background-color: #DE2431;
+    max-width: 446px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.mount__ttl{
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    padding-top: 65px;
+    padding-left: 15px;
+}
+
+.mount__base{
+    height: 500px;
+    background: white;
+    border-radius: 21px 21px 0 0;
+    box-shadow: 0px -4px 4px #00000029;
+    padding: 20px;
+}
+
+.mount__map{
+    width: 270px;
+    height: 400px;
+    background-image: url('../img/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+}
+
+.mount__map-item{
+    width: 60px;
+}
+
+.mount__btn{
+    font-size: 20px;
+    width: 220px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    background-color: #377FA6;
+    box-shadow: 3px 3px 3px #0000003B;
+    border-radius: 27px;
+}

@@ -20,18 +20,18 @@ body{
     align-items: center;
 }
 
-.change__ttl{
+.login__ttl{
     padding-top: 50px;
     position: relative;
 }
 
-.change__ttl-item{
+.login__ttl-item{
     color: white;
     font-weight: bold;
     top: 10px;
 }
 
-.change__ttl-item::before{
+.login__ttl-item::before{
     content: "________";
     font-weight: bold;
     position: absolute;
@@ -40,7 +40,7 @@ body{
     
 }
 
-.change__ttl-item::after{
+.login__ttl-item::after{
     content: "________";
     font-weight: bold;
     position: absolute;
@@ -48,7 +48,7 @@ body{
     right: -80px;
 }
 
-.change__form{
+.login__form{
     width: 320px;
     height: 355px;
     margin: 25px auto;
@@ -62,7 +62,7 @@ body{
     align-items: center;
 }
 
-.change__input{
+.login__input{
     width: 270px;
     height: 45px;
     border: 2px solid #B3B3B3 ;
@@ -70,7 +70,7 @@ body{
 }
 
 
-.change__btn{
+.login__btn{
     width: 230px;
     height: 40px;
     color: white;
