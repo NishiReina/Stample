@@ -43,7 +43,8 @@
                     <p class="picturebook__modal-firstview-p">{{ stamp.shop.category.name }}</p>
                     <p class="picturebook__modal-firstview-p">{{ stamp.shop.shop_name }}</p>
                   </div>
-                  <p class="picturebook__todetail-btn"><a href="{% url 'detail' stamp.shop.uuid %}">お店の詳細はこちら</a></p>
+                  <!-- <p class="picturebook__todetail-btn"><a href="{% url 'detail' stamp.shop.uuid %}">お店の詳細はこちら</a></p> -->
+                  <input type="button" class="picturebook__todetail-btn" value="お店の詳細はこちら">
                 </div>
               </div>
               <div class="picturebook__modal-context">
@@ -57,25 +58,39 @@
             </div>
             <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
             <div class="picturebook__modal-detail">
-              <p>{{ stamp.shop.in_area_num }}</p>
-              <p>{{ stamp.shop.category.name }}</p>
-              <p>{{ stamp.shop.shop_name }}</p>
-              <p>{{ stamp.shop.catchphrase }}</p>
-              <img src="{{ stamp.shop.image.url }}"/>
-        
-              {% for tag in stamp.shop.tags.all %}
-              <p>#{{ tag.name }}</p>
-              {% endfor %}
-        
-              <p>{{ stamp.shop.shop_detail }}</p>
-              <p>{{ stamp.shop.item_name }}</p>
-              <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
-              <p>{{ stamp.shop.contact }}</p>
-              <img src="{{ stamp.shop.address_image.url }}"/>
-              <p>{{ stamp.shop.url }}</p>
-              <p>{{ stamp.shop.instagram }}</p>
-              <p>{{ stamp.shop.address_twitter }}</p>
-        
+              <p class="modal__detail-num">{{ stamp.shop.in_area_num }}</p>
+              <input type="button" class="modal__detail-close" value="×">
+              <div class="modal__detail-firstview">
+                <p class="modal__detail-category">{{ stamp.shop.category.name }}</p>
+                <p class="modal__detail-shop">{{ stamp.shop.shop_name }}</p>
+                <p class="modal__detail-phrase">{{ stamp.shop.catchphrase }}</p>
+                <div class="modal__detail-img">
+                  <img class="modal__detail-img-item" src="{{ stamp.shop.image.url }}"/>
+                </div>
+                <div class="modal__detail-tags">
+                  {% for tag in stamp.shop.tags.all %}
+                  <p class="modal__detail-tag">#{{ tag.name }}</p>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="modal__detail-context">
+                <div class="modal__detail-context-txt">
+                  <div class="modal__detail-detail">
+                    <p>{{ stamp.shop.shop_detail }}</p>
+                  </div>
+                  <p class="modal__deteil-goods"><span class="modal__detail-goods--red">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+                  <p class="modal__detail-time">{{ stamp.shop.opening }} {{ stamp.shop.closed }}</p>
+                  <p class="modal__detail-contact"><span><img class="modal__detail-icon modal__detail-contact-icon" src="{% static 'img/phone.png' %}" alt=""></span>{{ stamp.shop.contact }}</p>
+                </div>
+                <div class="modal__detail-context-img">
+                  <img src="{{ stamp.shop.address_image.url }}"/>
+                  <div class="modal__detail-context-icon">
+                    <a href="{{ stamp.shop.instagram }}"><img class="modal__detail-icon" src="{% static 'img/insta__icon.png'%}" alt=""></a>
+                    <a href="{{ stamp.shop.address_twitter }}"><img class="modal__detail-icon" src="{% static 'img/twitter.png' %}" alt=""></a>
+                    <a href="{{ stamp.shop.url }}"><img class="modal__detail-icon" src="{% static 'img/HP.png' %}" alt=""></a>
+                  </div>
+                </div>
+              </div>
             </div>
             <br>
             
@@ -158,7 +173,8 @@
       </footer>
     </div>
     <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/picturebook.js' %}"></script>  
+    <script type="text/javascript" src="{% static 'js/picturebook.js' %}"></script> 
+    <!-- <script type="text/javascript" src="{% static 'js/detail.js' %}"></script>    -->
 </body>
 </html>
 
