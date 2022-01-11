@@ -17,7 +17,7 @@
 
             <form class="change__form" action="{% url 'accounts:change' %}" method="POST">
                 {% csrf_token %}
-                <p class="change__mail">メールアドレス（半角英数字）<input class="change__input" type="text" name="email"></p>
+                <p class="change__mail">メールアドレス（半角英数字）<input class="change__input" type="text" name="email" placeholder="stample@domein.com"></p>
                 <div class="change__pass">
                     <p class="change__first">パスワード（半角英数字）<input class="change__input" type="password" name="password"></p>
                     <p class="change__confirm">パスワード確認のためもう一度<input class="change__input" type="password" name="password2"></p>

@@ -20,14 +20,16 @@
           
           <form class="login__form" method="post">
             {% csrf_token %}
-            
-            <p class="login__mail"><label for="id_username">メールアドレス</label> <input class="login__input" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username"></p>
-            <p class="login__pass"><label for="id_password">パスワード</label> <input class="login__input" type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
-            <input type="submit" value="ログインする">
-          </form>
-          <p>新規登録の方はこちら</p>
-          <p><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
-          <p><a href="{% url 'index' %}">index</a></p>
+            <div class="login__info">
+              <p class="login__mail"><label for="id_username">メールアドレス（半角英数字）</label> <input class="login__input" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username" placeholder="stample@domein.com"></p>
+              <p class="login__pass"><label for="id_password">パスワード（半角英数字）</label> <input class="login__input" type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
+            </div>
+            <div class="login__btn">
+              <input class="login__btn-item" type="submit" value="ログインする">
+              <p>新規登録の方はこちら</p>
+              <p class="login__btn-item"><span class="login__new-span"><img class="login__new-icon" src="{% static 'img/mail__icon.png' %}" alt=""></span><a href="{% url 'to_change_page' %}">ユーザ登録する</a></p>
+            </div>
+        </form>
     </main>
     <footer class="footer">
       <ul class="footer__list">
