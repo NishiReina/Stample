@@ -22,6 +22,11 @@ body{
     padding: 30px;
     border-radius: 18px;
     position: relative;
+    overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+    display:none;
 }
 
 .stamp-get__close{
