@@ -11,36 +11,74 @@
   <body>
     <div class="stamp-get">
       <main class="main">
-        <a href="/home" class="stamp-get__close">×</a>
-        <div class="stamp-get__ttl">
-          <img class="stamp-get__ttl-img" src="{% static 'img/cracker.png' %}" alt="">
-          <h1 class="stamp-get__ttl-item">スタンプGET</h1>
-          <img class="stamp-get__ttl-img" src="{% static 'img/cracker.png' %}" alt="">
-        </div>
-        <div class="stamp-get__firstview">
-          <div class="stamp-get__firstview-img">
-            <img src="{{ stamp.shop.stamp_image.url }}"/>
+        <div class="stamp-get-modal">
+          <a href="/home" class="stamp-get__close">×</a>
+          <div class="stamp-get__ttl">
+            <img class="stamp-get__ttl-img" src="{% static 'img/cracker.png' %}" alt="">
+            <h1 class="stamp-get__ttl-item">スタンプGET</h1>
+            <img class="stamp-get__ttl-img" src="{% static 'img/cracker.png' %}" alt="">
           </div>
-          <div class="stamp-get__firstview-txt">
-            <p class="stamp-get__firstview-tag">スタンプモチーフ</p>
-            <p class="stamp-get__firstview-goods">{{ stamp.shop.item_name }}</p>
-            <div class="stamp-get__firstview-name">
-              <p class="stamp-get__firstview-p">{{ stamp.shop.category.name }}</p>
-              <p class="stamp-get__firstview-p">{{ stamp.shop.shop_name }}</p>
+          <div class="stamp-get__firstview">
+            <div class="stamp-get__firstview-img">
+              <img src="{{ stamp.shop.stamp_image.url }}"/>
             </div>
-            <p class="stamp-get__back"><a href="{% url 'detail' stamp.shop.uuid %}">お店の詳細はこちら</a></p>
+            <div class="stamp-get__firstview-txt">
+              <p class="stamp-get__firstview-tag">スタンプモチーフ</p>
+              <p class="stamp-get__firstview-goods">{{ stamp.shop.item_name }}</p>
+              <div class="stamp-get__firstview-name">
+                <p class="stamp-get__firstview-p">{{ stamp.shop.category.name }}</p>
+                <p class="stamp-get__firstview-p">{{ stamp.shop.shop_name }}</p>
+              </div>
+              <input type="button" class="stamp-get__todetail-btn" value="お店の詳細はこちら">
+            </div>
+          </div>
+          <div class="stamp-get__detail">
+            <dl>
+              <dt class="stamp-get__detail-dt">スタンプ由来</dt>
+              <dd class="stamp-get__detail-dd">{{ stamp.shop.origin }}</dd>
+              <dt class="stamp-get__detail-dt">{{ stamp.shop.item_name }}</dt>
+              <dd class="stamp-get__detail-dd">{{ stamp.shop.item_detail }}</dd>
+            </dl>
           </div>
         </div>
-        <div class="stamp-get__detail">
-          <dl>
-            <dt class="stamp-get__detail-dt">スタンプ由来</dt>
-            <dd class="stamp-get__detail-dd">{{ stamp.shop.origin }}</dd>
-            <dt class="stamp-get__detail-dt">{{ stamp.shop.item_name }}</dt>
-            <dd class="stamp-get__detail-dd">{{ stamp.shop.item_detail }}</dd>
-          </dl>
+        <div class="stamp-get__modal-detail">
+          <p class="modal__detail-num">{{ stamp.shop.in_area_num }}</p>
+          <input type="button" class="modal__detail-close" value="×">
+          <!-- <a class="modal__detail-close" href="/home">×</a> -->
+          <div class="modal__detail-firstview">
+            <p class="modal__detail-category">{{ stamp.shop.category.name }}</p>
+            <p class="modal__detail-shop">{{ stamp.shop.shop_name }}</p>
+            <p class="modal__detail-phrase">{{ stamp.shop.catchphrase }}</p>
+            <div class="modal__detail-img">
+              <img class="modal__detail-img-item" src="{{ stamp.shop.image.url }}"/>
+            </div>
+            <div class="modal__detail-tags">
+              {% for tag in stamp.shop.tags.all %}
+              <p class="modal__detail-tag">#{{ tag.name }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="modal__detail-context">
+            <div class="modal__detail-context-txt">
+              <div class="modal__detail-detail">
+                <p>{{ stamp.shop.shop_detail }}</p>
+              </div>
+              <p class="modal__deteil-goods"><span class="modal__detail-goods--red">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+              <p class="modal__detail-time">{{ stamp.shop.opening }} {{ stamp.shop.closed }}</p>
+              <p class="modal__detail-contact"><span><img class="modal__detail-icon modal__detail-contact-icon" src="{% static 'img/phone.png' %}" alt=""></span>{{ stamp.shop.contact }}</p>
+            </div>
+            <div class="modal__detail-context-img">
+              <img src="{{ stamp.shop.address_image.url }}"/>
+              <div class="modal__detail-context-icon">
+                <a href="{{ stamp.shop.instagram }}"><img class="modal__detail-icon" src="{% static 'img/insta__icon.png'%}" alt=""></a>
+                <a href="{{ stamp.shop.address_twitter }}"><img class="modal__detail-icon" src="{% static 'img/twitter.png' %}" alt=""></a>
+                <a href="{{ stamp.shop.url }}"><img class="modal__detail-icon" src="{% static 'img/HP.png' %}" alt=""></a>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
-
+    <script type="text/javascript" src="{% static 'js/stamp_get.js' %}"></script> 
 </body>
 </html>

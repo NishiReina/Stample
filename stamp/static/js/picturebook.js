@@ -1,38 +1,3 @@
-// window.onload = () => {
-//     const stampOpenBtns = document.getElementsByClassName('picturebook__modal-open');
-//     const stampCloseBtns = document.getElementsByClassName('picturebook__modal-close');
-//     const stampModal = document.getElementsByClassName('picturebook__modal');
-
-//     console.log(stampOpenBtns);
-//     console.log(stampModal);
-//     for (let i = 0; i < stampOpenBtns.length; i++){
-//         console.log(stampOpenBtns[i]);
-//         console.log(stampModal[i]);
-//         stampOpenBtns[i].addEventListener('click', 
-//             {
-//                 value: i,
-//                 handleEvent: stampOpen                
-//             }
-//         );
-
-//         stampCloseBtns[i].addEventListener('click', 
-//             {
-//                 value: i,
-//                 handleEvent: stampClose            
-//             }
-//         );
-//     }
-
-
-//     function stampOpen(){
-//         stampModal[this.value].style.display = 'block';
-//     }
-
-//     function stampClose(){
-//         stampModal[this.value].style.display = 'none';
-//     }
-
-// };
 
 // スタンプモーダル
 const stampOpenBtns = document.getElementsByClassName('picturebook__modal-open');
