@@ -1,0 +1,118 @@
+body{
+    width: 446px;
+    height: 720px;
+    margin: 0 auto;
+}
+
+.home{
+    width: 446px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.main{
+    background-image: url("../img/map__bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 446px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.home__ttl{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.home__ttl-item{
+    font-size: 25px;
+}
+
+.home__map{
+    width: 300px;
+    height: 450px;
+    background-image: url('../img/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.home__btn{
+    display: block;
+    font: normal normal bold 21px/34px Yu Gothic;
+    font-size: 20px;
+    width: 220px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 40px;
+    color: white;
+    background-color: #377FA6;
+    box-shadow: 3px 3px 3px #0000003B;
+    border-radius: 27px;
+}
+
+.home__modal{
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.home__modal-form{
+    background-color: white;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    top: 150px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.home__modal-label{
+    font-size: 16px;
+}
+
+.home__modal-input{
+    width: 300px;
+    height: 50px;
+    border: 2px solid red;
+    border-radius: 17px;
+}
+
+.home__modal-close{
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    background-color: #377FA6;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 380px;
+}
+
+.home__modal-btn{
+    font: normal normal bold 21px/34px Yu Gothic;
+    font-size: 20px;
+    width: 220px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 40px;
+    color: white;
+    background-color: #377FA6;
+    box-shadow: 3px 3px 3px #0000003B;
+    border-radius: 27px;
+}

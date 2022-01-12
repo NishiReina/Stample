@@ -1,46 +1,83 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>index</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
     </head>
   <body>
-    <h1>すたんぷるへようこそ！</h1>
+    <div class="index">
+      {% if user.is_authenticated %}
+        <main class="main">
+          <div class="start">
+            <h3 class="start__ttl">おススメ</h3>
+            <div class="start__form">
+              <form class="start__form-original" action="{% url 'original' %}" method="POST">
+                {% csrf_token %}
+                <button class="start__btn" type="submit" value="オリジナルで作成">オリジナルで作成</button>
+              </form>
+              <form class="start_form-random" action="{% url 'random_route' %}" method="POST">
+                {% csrf_token %}
+                <button class="start__btn" type="submit" value="ランダムで作成">ランダム作成</button>
+              </form>
+            </div>
+          </div>
 
-    {% if user.is_authenticated %}
-    <form action="{% url 'original' %}" method="POST">
-      {% csrf_token %}
-      <button type="submit" value="オリジナルで作成">オリジナルで作成</button>
-    </form>
-    <form action="{% url 'random_route' %}" method="POST">
-      {% csrf_token %}
-      <button type="submit" value="ランダムで作成">ランダム作成</button>
-    </form>
+          <div class="index__logout">
+            <a class="index__logout-btn" href="{% url 'logout' %}">
+              ログアウトする
+            </a>
+          </div>
+          
+        </main>
 
-    <a href="{% url 'logout' %}">logout</a>
-
-
-    {% else %}
-    
-
-    <form action="{% url 'accounts:signup_original' %}" method="POST">
-      {% csrf_token %}
-      <button type="submit" value="オリジナルで作成">オリジナルで作成</button>
-    </form>
-    <form action="{% url 'accounts:signup_random' %}" method="POST">
-      {% csrf_token %}
-      <button type="submit" value="ランダムで作成">ランダム作成</button>
-    </form>
+      {% else %}
+          <main class="main">
+            <div class="start">
+              <h3 class="start__ttl">おススメ</h3>
+              <div class="start__form">
+                <form class="start__form-original" action="{% url 'accounts:signup_original' %}" method="POST">
+                  {% csrf_token %}
+                  <button class="start__btn" type="submit" value="オリジナルで作成">オリジナルで作成</button>
+                </form>
+                <form class="start_form-random" action="{% url 'accounts:signup_random' %}" method="POST">
+                  {% csrf_token %}
+                  <button class="start__btn" type="submit" value="ランダムで作成">ランダム作成</button>
+                </form>
+              </div>
+            </div>
   
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-    {% endif %}
+            <div class="index__login">
+              <a class="index__login-btn" href="{% url 'logout' %}">
+                <span class="index__login--icon"><img src="{% static 'img/mail__icon.png' %}"></span>
+                ログインする
+              </a>
+            </div>
+          </main>
+      {% endif %}
 
-    <p><a href="#">ホーム</a></p>
-    <p><a href="#">ルート</a></p>
-    <p><a href="#">ずかん</a></p>
-    <p><a href="#">ログイン</a></p>
+
+      <footer class="footer">
+        <ul class="footer__list">
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="#"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
     
-    
-    
+
 </body>
 </html>
