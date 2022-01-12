@@ -110,6 +110,8 @@ def check_shop(input_shop_name):
         return False
     return True 
 
+#def check_stamp_number(request):
+    
 
 def stamp_to_home(request):
     user_data = request.user
