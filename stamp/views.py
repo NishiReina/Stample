@@ -178,14 +178,14 @@ def stamp_to_route(request):
             elif shop.keyword!=input_keyword:
                 stamp_list=request.session['key']
                 stamps = []
+
                 for i in range(len(stamp_list)):
                     shop = Shop.objects.get(in_area_num = stamp_list[i])
                     stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
                     stamps.append(stamp)
-                context={'stamps':stamps,
+                    context={'stamps':stamps,
                     'message':"キーワードが間違っています"}
                 return render(request,'stamp/route.html',context)
-        
         else :
             stamp_list=request.session['key']
             stamps = []
