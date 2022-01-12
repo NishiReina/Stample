@@ -110,7 +110,18 @@ def check_shop(input_shop_name):
         return False
     return True 
 
-#def check_stamp_number(request):
+def check_stamp_number(request):
+    count=0
+    user_data = request.user
+    for i in range(1,16):
+        shop=Shop.objects.get(in_area_num=i)
+        stamp = Stamp.objects.get(user=user_data.uuid,shop=shop.uuid)
+        if stamp.judgement:
+            count+=1
+    if count==5:
+        return True
+    else:
+        return False
     
 
 def stamp_to_home(request):
