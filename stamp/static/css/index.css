@@ -1,0 +1,82 @@
+body{
+    width: 446px;
+    height: 720px;
+    margin: 0 auto;
+}
+
+.index{
+    background-image: url("../img/start__bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 446px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.main{
+    width: inherit;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    display: flex;
+}
+
+.start{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.start__ttl{
+    color: white;
+    padding-bottom: 20px;
+}
+
+.start__btn{
+    width: 240px;
+    height: 55px;
+    font-weight: bold;
+    background: white;
+    border-radius: 43px;
+    margin-bottom: 30px;
+}
+
+.index__login{
+    width: 240px;
+    height: 35px;
+    background-color: #377FA6;
+    border-radius: 8px;
+    border: 2px solid white;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 50px;
+}
+
+.index__login-btn{
+    position: relative;
+}
+
+.index__login--icon img{
+    width: 20px;
+    position: absolute;
+    top: 5px;
+    left: -50px;
+}
+
+.index__logout{
+    width: 240px;
+    height: 35px;
+    background-color: #377FA6;
+    border-radius: 8px;
+    border: 2px solid white;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 50px;
+}

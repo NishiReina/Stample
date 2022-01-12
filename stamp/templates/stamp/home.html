@@ -1,52 +1,78 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>home</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
     </head>
   <body>
-    <h1>さぁ、スタンプを集めよう！</h1>
-    {% for stamp in stamps %}
-    {% if stamp.judgement %}<!--スタンプの画像うつす-->
-    <div>
-        <img src="{{ stamp.shop.stamp_image.url }}"/>
-        <p>{{ stamp.shop.in_area_num }}</p>
-        <p>{{ stamp.shop.shop_name }}</p>
+    <div class="home">
+      <main class="main">
+        <div class="home__ttl">
+          <h1 class="home__ttl-item">さぁ、スタンプを集めよう！</h1>
+          <p class="home__ttl-content">台紙にないスタンプも集められます。</p>
+        </div>
+        <div class="home__map">
+          {% for stamp in stamps %}
+          {% if stamp.judgement %}<!--スタンプの画像うつす-->
+          <div>
+              <img src="{{ stamp.shop.stamp_image.url }}"/>
+              <p>{{ stamp.shop.in_area_num }}</p>
+              <p>{{ stamp.shop.shop_name }}</p>
+          </div>
+
+          {% else %}<!--スタンプの画像うつさない-->
+          <div>
+            <img src="{% static 'img/stamp__bg.png' %}">
+            <p>{{ stamp.shop.in_area_num }}</p>
+            <p>{{ stamp.shop.shop_name }}</p>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+
+          <button class="home__btn" id="modal-open" value="スタンプを押す">スタンプを押す</button>
+          
+          <div class="home__modal" id="modal">
+            <form class="home__modal-form" action="{% url 'stamp_to_home' %}" method="POST">
+              <input type="button" class="home__modal-close" id="modal-close" value="×">
+              {% csrf_token %}
+              <div class="home__modal-center">
+                <div class="home__mdoal-key">
+                  <label class="home__modal-label" for="keyword">キーワードを入力（ひらがな）</label>
+                  <input class="home__modal-input" type="text" name="keyword">
+                </div>
+                <div class="home__modal-shop">
+                  <label class="home__modal-label" for="shop_name">お店の名前を入力</label>
+                  <input class="home__modal-input" id="shop_name" type="text" name="shop_name">
+                </div>
+              </div>
+              <p>{{ message }}</p>
+              <button class="home__modal-btn" type="submit" value="スタンプを押す">スタンプを押す</button>
+            </form>
+          </div>
+
+      </main>
+      <footer class="footer">
+        <ul class="footer__list">
+          <li class="footer__list-item">
+            <a href="/home"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/original_route"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/user_picturebook"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/accounts/login"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+          </li>
+        </ul>
+      </footer>
     </div>
-
-    {% else %}<!--スタンプの画像うつさない-->
-    <div>
-      <img/>
-      <p>{{ stamp.shop.in_area_num }}</p>
-      <p>{{ stamp.shop.shop_name }}</p>
-    </div>
-    {% endif %}
-    {% endfor %}
-
-
-
-
-
-
-    <div>
-      <button value="スタンプを押す">スタンプを押す</button>
-
-    <form action="{% url 'stamp_to_home' %}" method="POST">
-        {% csrf_token %}
-        <p>キーワードを入力（ひらがな）<input type="text" name="keyword"></p>
-        <p>お店の名前を入力<input type="text" name="shop_name"></p>
-        <p>{{ message }}</p>
-        <button type="submit" value="スタンプを押す">スタンプを押す</button>
-    </form>
-    </div>
-  
-  
-  
-    <p><a href="{% url 'home' %}">ホーム</a></p>
-    <p><a href="{% url 'route' %}">ルート</a></p>
-    <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-      
-    
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
