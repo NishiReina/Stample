@@ -90,7 +90,7 @@ def home(request):
         stamp = Stamp.objects.get(user = user_data.uuid,shop=shop.uuid)
         stamps.append(stamp)
     if register_check:
-        context={'stamps':stamps,'register_message1':"ユーザー登録しませんか？",'register_message2':"次回に続きから再開できるようになります。",'register_message3':"右下のログインボタンから登録できます。"}
+        context={'stamps':stamps,'register_message1':"ユーザー登録しませんか？次回に続きから再開できるようになります。右下のログインボタンから登録できます。"}
     else:
         context={'stamps':stamps,'register_message':None}
     return render(request,'stamp/home.html',context)
