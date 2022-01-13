@@ -5,6 +5,7 @@ from accounts.models import User#勝手に初めて、勝手にログインす�
 from stamp.models import Stamp,Shop
 
 def signup_original(request):
+    request.session['count']=0
     if request.method == 'POST':
         user_data = User.objects.create(
             username = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])),
@@ -24,6 +25,7 @@ def signup_original(request):
     return render(request,'stamp/original.html')
 
 def signup_random(request):
+    request.session['count']=0
     if request.method == 'POST':
         user_data = User.objects.create(
             username = (''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])),
