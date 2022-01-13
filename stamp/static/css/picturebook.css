@@ -195,30 +195,6 @@ body{
     transform: translateY(-50%);
 }
 
-.picturebook__modal-firstview-goods::before {
-    content: "";
-    position: absolute;
-    top: 80px;
-    left: -10px;
-    background: #DE2431;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;    
-    transform: translateY(-50%);
-}
-
-.picturebook__modal-firstview-goods::after {
-    content: "";
-    position: absolute;
-    top: 80px;
-    right: -10px;
-    background: #DE2431;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;    
-    transform: translateY(-50%);
-}
-
 .picturebook__modal-firstview-name{
     margin: 10px 0 20px;
 }

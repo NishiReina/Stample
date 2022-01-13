@@ -20,15 +20,19 @@
             {% if stamp.judgement %}<!--スタンプの画像うつす-->
             <div class="mount__map-item">
                 <img src="{{ stamp.shop.stamp_image.url }}"/>
-                <span class="mount__map-areanum">{{ stamp.shop.in_area_num }}</span>
-                <span class="mount__map-shopname">{{ stamp.shop.shop_name }}</span>
+                <div class="mount__map-item-txt">
+                  <span class="mount__map-num">{{ stamp.shop.in_area_num }}</span>
+                  <span class="mount__map-name">{{ stamp.shop.shop_name }}</span>
+                </div>
             </div>
     
             {% else %}<!--スタンプの画像うつさない-->
             <div class="mount__map-item">
               <img src="{% static 'img/stamp__bg.png' %}">
-              <span class="mount__map-areanum">{{ stamp.shop.in_area_num }}</span>
-              <span class="mount__map-shopname">{{ stamp.shop.shop_name }}</span>
+              <div class="mount__map-item-txt">
+                <span class="mount__map-num">{{ stamp.shop.in_area_num }}</span>
+                <span class="mount__map-name">{{ stamp.shop.shop_name }}</span>
+              </div>
             </div>
             {% endif %}
             {% endfor %}
