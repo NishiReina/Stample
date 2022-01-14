@@ -416,3 +416,15 @@ body{
     box-shadow: 3px 3px 3px #0000003B;
     border-radius: 27px;
 }
+
+.route-border{
+    height: 20px;
+}
+
+.route-border-item{
+    width: 10px;
+    height: 10px;
+    margin: 10px auto 0;
+    background-color: #D5B158;
+    border-radius: 50%;
+}
