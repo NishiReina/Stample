@@ -1,109 +1,186 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <title>route</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/route.css' %}">
     </head>
   <body>
-    <h1>観光も楽しみながらスタンプラリー！</h1>
+    <div class="route">
+      <div class="route-bg">
+      <main class="main">
+        <h1 class="route__ttl">観光も楽しみながらスタンプラリー！</h1>
 
 
-    {% for stamp in stamps %}
-    {% if stamp.judgement %}<!--スタンプ取得済み-->
-    <div>
-        {% for tag in stamp.shop.tags.all %}
-        <p>#{{ tag.name }}</p>
+        {% for stamp in stamps %}
+        {% if stamp.judgement %}<!--スタンプ取得済み-->
+        <p class="route__detail-num">{{ stamp.shop.in_area_num }}</p>
+        <div class="route__shop">
+          <div class="route__shop-tags">
+            {% for tag in stamp.shop.tags.all %}
+            <p  class="route__shop-tag">#{{ tag.name }}</p>
+            {% endfor %}
+          </div>
+          <img class="route__stamp-icon" src="{% static 'img/stamp__icon-red.png' %}" alt="">
+            <img class="route__shop-img" src="{{ stamp.shop.image.url }}"/>
+            <div class="route__shop-txt">
+              <div class="route__shop-left">
+                <p class="route__shop-name">{{ stamp.shop.shop_name }}</p>
+                <div class="route__shop-house">
+                  <p class="route__shop-post">{{ stamp.shop.postalcode }}</p>
+                  <p class="route__shop-address">{{ stamp.shop.address }}</p>
+                </div>
+              </div>
+              <div class="route__shop-right">
+                <p class="route__shop-item"><span class="route__shop-item--span">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+                <input type="button" class="route__todetail-btn" value="詳細表示">
+              </div>
+            </div>
+        </div>
+        
+        <!--詳細表示を押したときに出るモーダルの中身-->
+        <div class="picturebook__modal-detail">
+          <p class="modal__detail-num">{{ stamp.shop.in_area_num }}</p>
+          <input type="button" class="modal__detail-close" value="×">
+          <div class="modal__detail-firstview">
+            <p class="modal__detail-category">{{ stamp.shop.category.name }}</p>
+            <p class="modal__detail-shop">{{ stamp.shop.shop_name }}</p>
+            <p class="modal__detail-phrase">{{ stamp.shop.catchphrase }}</p>
+            <div class="modal__detail-img">
+              <img class="modal__detail-img-item" src="{{ stamp.shop.image.url }}"/>
+            </div>
+            <div class="modal__detail-tags">
+              {% for tag in stamp.shop.tags.all %}
+              <p class="modal__detail-tag">#{{ tag.name }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="modal__detail-context">
+            <div class="modal__detail-context-txt">
+              <div class="modal__detail-detail">
+                <p>{{ stamp.shop.shop_detail }}</p>
+              </div>
+              <p class="modal__deteil-goods"><span class="modal__detail-goods--red">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+              <p class="modal__detail-time">{{ stamp.shop.opening }} {{ stamp.shop.closed }}</p>
+              <p class="modal__detail-contact"><span><img class="modal__detail-icon modal__detail-contact-icon" src="{% static 'img/phone.png' %}" alt=""></span>{{ stamp.shop.contact }}</p>
+            </div>
+            <div class="modal__detail-context-img">
+              <img src="{{ stamp.shop.address_image.url }}"/>
+              <div class="modal__detail-context-icon">
+                <a href="{{ stamp.shop.instagram }}"><img class="modal__detail-icon" src="{% static 'img/insta__icon.png'%}" alt=""></a>
+                <a href="{{ stamp.shop.address_twitter }}"><img class="modal__detail-icon" src="{% static 'img/twitter.png' %}" alt=""></a>
+                <a href="{{ stamp.shop.url }}"><img class="modal__detail-icon" src="{% static 'img/HP.png' %}" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        
+        {% else %}<!--スタンプ未取得-->
+        <p class="route__detail-num">{{ stamp.shop.in_area_num }}</p>
+        <div class="route__shop">
+          <div class="route__shop-tags">
+            {% for tag in stamp.shop.tags.all %}
+            <p  class="route__shop-tag">#{{ tag.name }}</p>
+            {% endfor %}
+          </div>
+          <img class="route__stamp-icon" src="{% static 'img/stamp__icon.png' %}" alt="">
+          <img class="route__shop-img" src="{{ stamp.shop.image.url }}"/>
+          <div class="route__shop-txt">
+            <div class="route__shop-left">
+              <p class="route__shop-name">{{ stamp.shop.shop_name }}</p>
+              <div class="route__shop-house">
+                <p class="route__shop-post">{{ stamp.shop.postalcode }}</p>
+                <p class="route__shop-address">{{ stamp.shop.address }}</p>
+              </div>
+            </div>
+            <div class="route__shop-right">
+              <p class="route__shop-item"><span class="route__shop-item--span">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+              <input type="button" class="route__todetail-btn" value="詳細表示">
+            </div>
+          </div>
+        </div>
+        <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
+        <div class="picturebook__modal-detail">
+          <p class="modal__detail-num">{{ stamp.shop.in_area_num }}</p>
+          <input type="button" class="modal__detail-close" value="×">
+          <div class="modal__detail-firstview">
+            <p class="modal__detail-category">{{ stamp.shop.category.name }}</p>
+            <p class="modal__detail-shop">{{ stamp.shop.shop_name }}</p>
+            <p class="modal__detail-phrase">{{ stamp.shop.catchphrase }}</p>
+            <div class="modal__detail-img">
+              <img class="modal__detail-img-item" src="{{ stamp.shop.image.url }}"/>
+            </div>
+            <div class="modal__detail-tags">
+              {% for tag in stamp.shop.tags.all %}
+              <p class="modal__detail-tag">#{{ tag.name }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="modal__detail-context">
+            <div class="modal__detail-context-txt">
+              <div class="modal__detail-detail">
+                <p>{{ stamp.shop.shop_detail }}</p>
+              </div>
+              <p class="modal__deteil-goods"><span class="modal__detail-goods--red">目玉商品：</span>{{ stamp.shop.item_name }}</p>
+              <p class="modal__detail-time">{{ stamp.shop.opening }} {{ stamp.shop.closed }}</p>
+              <p class="modal__detail-contact"><span><img class="modal__detail-icon modal__detail-contact-icon" src="{% static 'img/phone.png' %}" alt=""></span>{{ stamp.shop.contact }}</p>
+            </div>
+            <div class="modal__detail-context-img">
+              <img src="{{ stamp.shop.address_image.url }}"/>
+              <div class="modal__detail-context-icon">
+                <a href="{{ stamp.shop.instagram }}"><img class="modal__detail-icon" src="{% static 'img/insta__icon.png'%}" alt=""></a>
+                <a href="{{ stamp.shop.address_twitter }}"><img class="modal__detail-icon" src="{% static 'img/twitter.png' %}" alt=""></a>
+                <a href="{{ stamp.shop.url }}"><img class="modal__detail-icon" src="{% static 'img/HP.png' %}" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
         {% endfor %}
-        <img src="{{ stamp.shop.image.url }}"/>
-        <p>{{ stamp.shop.shop_name }}</p>
-        <p>{{ stamp.shop.postalcode }}</p>
-        <p>{{ stamp.shop.address }}</p>
-        <p>{{ stamp.shop.item_name }}</p>
-        <p><a href="{% url 'detail' stamp.shop.uuid %}">詳細表示</a></p>
+        <button class="home__btn" id="modal-open" value="スタンプを押す">スタンプを押す</button>
+        
+        <div class="home__modal" id="modal">
+          <form class="home__modal-form" action="{% url 'stamp_to_route' %}" method="POST">
+            <input type="button" class="home__modal-close" id="modal-close" value="×">
+            {% csrf_token %}
+            <div class="home__modal-center">
+              <div class="home__mdoal-key">
+                <label class="home__modal-label" for="keyword">キーワードを入力（ひらがな）</label>
+                <input class="home__modal-input" type="text" name="keyword">
+              </div>
+              <div class="home__modal-shop">
+                <label class="home__modal-label" for="shop_name">お店の名前を入力</label>
+                <input class="home__modal-input" id="shop_name" type="text" name="shop_name">
+              </div>
+            </div>
+            <p>{{ message }}</p>
+            <button class="home__modal-btn" type="submit" value="スタンプを押す">スタンプを押す</button>
+          </form>
+        </div>
+      </main>
+      <footer class="footer">
+        <ul class="footer__list">
+          <li class="footer__list-item">
+            <a href="/home"><img src="{% static 'img/home__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ホーム</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/route"><img src="{% static 'img/route__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ルート</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/user_picturebook"><img src="{% static 'img/book__icon.png' %}" class="footer__icon" alt=""><span class="footer__list--span">ずかん</span></a>
+          </li>
+          <li class="footer__list-item">
+            <a href="/accounts/login"><img src="{% static 'img/login__icon.png' %}" class="footer__icon" alt=""></a>
+          </li>
+        </ul>
+      </footer>
     </div>
-    
-    <!--詳細表示を押したときに出るモーダルの中身-->
-    <div>
-      <p>{{ stamp.shop.in_area_num }}</p>
-      <p>{{ stamp.shop.category.name }}</p>
-      <p>{{ stamp.shop.shop_name }}</p>
-      <p>{{ stamp.shop.catchphrase }}</p>
-      <img src="{{ stamp.shop.image.url }}"/>
-
-      {% for tag in stamp.shop.tags.all %}
-      <p>#{{ tag.name }}</p>
-      {% endfor %}
-
-      <p>{{ stamp.shop.shop_detail }}</p>
-      <p>{{ stamp.shop.item_name }}</p>
-      <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
-      <p>{{ stamp.shop.contact }}</p>
-      <img src="{{ stamp.shop.address_image.url }}"/>
-      <p>{{ stamp.shop.url }}</p>
-      <p>{{ stamp.shop.instagram }}</p>
-      <p>{{ stamp.shop.address_twitter }}</p>
-
     </div>
-    <br>
-    
-    {% else %}<!--スタンプ未取得-->
-    <div>
-        {% for tag in stamp.shop.tags.all %}
-        <p>#{{ tag.name }}</p>
-        {% endfor %}
-        <img src="{{ stamp.shop.image.url }}"/>
-        <p>{{ stamp.shop.shop_name }}</p>
-        <p>{{ stamp.shop.postalcode }}</p>
-        <p>{{ stamp.shop.address }}</p>
-        <p>{{ stamp.shop.item_name }}</p>
-        <p><a href="{% url 'detail' stamp.shop.uuid %}">詳細表示</a></p>
-    </div>
-    <!--「お店の詳細はこちら」を押したときに出るモーダルの中身-->
-    <div>
-      <p>{{ stamp.shop.in_area_num }}</p>
-      <p>{{ stamp.shop.category.name }}</p>
-      <p>{{ stamp.shop.shop_name }}</p>
-      <p>{{ stamp.shop.catchphrase }}</p>
-      <img src="{{ stamp.shop.image.url }}"/>
-      {% for tag in stamp.shop.tags.all %}
-      <p>#{{ tag.name }}</p>
-      {% endfor %}
-      <p>{{ stamp.shop.shop_detail }}</p>
-      <p>{{ stamp.shop.item_name }}</p>
-      <p>{{ stamp.shop.opening }}   {{ stamp.shop.closed }}</p>
-      <p>{{ stamp.shop.contact }}</p>
-      <img src="{{ stamp.shop.address_image.url }}"/>
-      <p>{{ stamp.shop.url }}</p>
-      <p>{{ stamp.shop.instagram }}</p>
-      <p>{{ stamp.shop.address_twitter }}</p>
-
-    </div>
-    {% endif %}
-    {% endfor %}
-
-
-
-
-
-    
-
-    <div>
-      <button value="スタンプを押す">スタンプを押す</button>
-
-    <form action="{% url 'stamp_to_route' %}" method="POST">
-        {% csrf_token %}
-        <p>キーワードを入力（ひらがな）<input type="text" name="keyword"></p>
-        <p>お店の名前を入力<input type="text" name="shop_name"></p>
-        <p>{{ message }}</p>
-        <button type="submit" value="スタンプを押す">スタンプを押す</button>
-    </form>
-    </div>
-
-    
-    <p><a href="{% url 'home' %}">ホーム</a></p>
-    <p><a href="{% url 'route' %}">ルート</a></p>
-    <p><a href="{% url 'user_picturebook' %}">ずかん</a></p>
-    <p><a href="{% url 'login' %}">ログイン</a></p>
-    
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/route.js' %}"></script>   
 </body>
 </html>
