@@ -6,6 +6,8 @@ const stamps = document.getElementsByClassName('picturebook__stamp');
 const btn = document.getElementsByClassName('home__btn');
 const route = document.getElementsByClassName('route__shop');
 const routeNum = document.getElementsByClassName('route__detail-num');
+const border= document.getElementsByClassName('route-border');
+
 // detailモーダル
 const detailModal = document.getElementsByClassName('picturebook__modal-detail');
 const detailOpenBtns = document.getElementsByClassName('route__todetail-btn');
@@ -37,6 +39,7 @@ function detailOpen() {
     }
     for (let i = 0; i < routeNum.length; i++){
         routeNum[i].style.display = 'none';
+        border[i].style.display = 'none';
     }
 }
 
@@ -50,6 +53,7 @@ function detailClose() {
     }
     for (let i = 0; i < routeNum.length; i++){
         routeNum[i].style.display = 'block';
+        border[i].style.display = 'block';
     }
     
 }

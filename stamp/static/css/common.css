@@ -10,6 +10,7 @@ body{
     width: 446px;
     height: 720px;
     margin: 0 auto;
+    border: 1px solid #7D7A79;
 }
 
 button {
